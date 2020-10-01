@@ -18,10 +18,10 @@
     <g v-for="task in dependencyTasks" :key="task.id" :task="task">
       <path
         class="gantt-elastic__chart-dependency-lines-path"
-        :style="{ ...root.style['chart-dependency-lines-path'], ...task.style['chart-dependency-lines-path'], ...task.style['chart-dependency-lines-path-' + dependencyLine.task_id] }"
+        :style="{ ...root.style['chart-dependency-lines-path'], ...task.style['chart-dependency-lines-path'], ...task.style['chart-dependency-lines-path-' + task.id + '-' + dependencyLine.task_id] }"
         v-for="dependencyLine in task.dependencyLines"
         :key="dependencyLine.id"
-        :task="task"
+        :task="task.id"
         :d="dependencyLine.points"
       ></path>
     </g>
@@ -112,7 +112,9 @@ export default {
           });
           return task;
         })
-        .filter(task => task.dependencyLines.points !== null);
+        .filter(task => task.dependencyLines.points !== null).sort((a, b) => {
+          return (a.zIndex || 0) - (b.zIndex || 0)
+        });
     }
   }
 };

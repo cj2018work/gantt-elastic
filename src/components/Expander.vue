@@ -126,6 +126,7 @@ export default {
       const collapsed = !this.collapsed;
       this.tasks.forEach(task => {
         task.collapsed = collapsed;
+        this.root.$emit(`chart-expander-click`, { data: task });
       });
     }
   }
