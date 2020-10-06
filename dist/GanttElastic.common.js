@@ -5725,6 +5725,14 @@ let ignoreScrollEvents = false;
      * When in drag scrolling mode this method calculate scroll movement
      */
     chartMouseMove(ev) {
+      if (this.root.state.options.times.coordinate) {
+        let dim = this.$refs.chartContainer.getBoundingClientRect()
+        this.root.$emit('chart-realtime-coordinate', {
+          x: ev.clientX - dim.left,
+          y: ev.clientY - dim.top,
+          time: new Date(this.root.pixelOffsetXToTime(ev.clientX - dim.left))
+        });
+      }
       if (this.root.state.options.scroll.scrolling) {
         ev.preventDefault();
         ev.stopImmediatePropagation();
@@ -6207,7 +6215,7 @@ function getOptions(userOptions) {
         dateTime: {
           left: '',
           right: ''
-        }
+        },
       }
     },
     scope: {
@@ -6226,7 +6234,8 @@ function getOptions(userOptions) {
       totalViewDurationMs: 0,
       totalViewDurationPx: 0,
       stepDuration: 'day',
-      steps: []
+      steps: [],
+      coordinate: true
     },
     row: {
       height: 24 //*

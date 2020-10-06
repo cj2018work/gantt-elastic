@@ -87,7 +87,7 @@ function getOptions(userOptions) {
         dateTime: {
           left: '',
           right: ''
-        }
+        },
       }
     },
     scope: {
@@ -106,7 +106,8 @@ function getOptions(userOptions) {
       totalViewDurationMs: 0,
       totalViewDurationPx: 0,
       stepDuration: 'day',
-      steps: []
+      steps: [],
+      coordinate: true
     },
     row: {
       height: 24 //*
