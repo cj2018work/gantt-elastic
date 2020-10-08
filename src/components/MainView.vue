@@ -242,9 +242,9 @@ export default {
       if (this.root.state.options.times.coordinate) {
         let dim = this.$refs.chartContainer.getBoundingClientRect()
         this.root.$emit('chart-realtime-coordinate', {
-          x: ev.clientX - dim.left,
+          x: ev.clientX - dim.left + this.$refs.chartScrollContainerHorizontal.scrollLeft,
           y: ev.clientY - dim.top,
-          time: new Date(this.root.pixelOffsetXToTime(ev.clientX - dim.left))
+          time: new Date(this.root.pixelOffsetXToTime(ev.clientX - dim.left + this.$refs.chartScrollContainerHorizontal.scrollLeft))
         });
       }
       if (this.root.state.options.scroll.scrolling) {
