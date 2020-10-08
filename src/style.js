@@ -216,6 +216,14 @@ export default function getStyle(fontSize = '12px', fontFamily = 'Arial, sans-se
       stroke: '#FF000080',
       'stroke-width': 1
     },
+    'chart-row-event-ruler-axis': {
+      stroke: '#66ccff',
+      'stroke-width': 1,
+      strokeDasharray: '4 2 1'
+    },
+    'chart-row-event-ruler-point': {
+      fill: "#66ccff"
+    },
     chart: {
       'user-select': 'none',
       overflow: 'hidden'

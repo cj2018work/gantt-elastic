@@ -2694,6 +2694,18 @@ var Chartvue_type_template_id_67c3f5cd_render = function() {
                             _c(task.type, {
                               tag: "component",
                               attrs: { task: task }
+                            }),
+                            _vm._v(" "),
+                            _c("event-ruler", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: task.showEvent,
+                                  expression: "task.showEvent"
+                                }
+                              ],
+                              attrs: { task: task }
                             })
                           ],
                           1
@@ -3926,6 +3938,202 @@ var DependencyLines_component = normalizeComponent(
 if (false) { var DependencyLines_api; }
 DependencyLines_component.options.__file = "src/components/Chart/DependencyLines.vue"
 /* harmony default export */ var DependencyLines = (DependencyLines_component.exports);
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/EventRuler.vue?vue&type=template&id=bd4841c6&
+var EventRulervue_type_template_id_bd4841c6_render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "g",
+    {
+      staticClass: "gantt-elastic__chart-event-ruler-container",
+      style: Object.assign({}, _vm.root.style["chart-event-ruler-container"])
+    },
+    [
+      _c("line", {
+        staticClass: "gantt-elastic__chart-event-ruler",
+        style: Object.assign({}, _vm.root.style["chart-row-event-ruler-axis"]),
+        attrs: {
+          x1: 0,
+          y1: _vm.task.y - 2,
+          x2: _vm.root.state.options.width + "px",
+          y2: _vm.task.y - 2
+        }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.eventsInTask, function(event) {
+        return _c(
+          "circle",
+          {
+            key: event.key,
+            style: Object.assign(
+              {},
+              _vm.root.style["chart-row-event-ruler-point"],
+              event.style.base,
+              event.style[event.status]
+            ),
+            attrs: { cx: event.cx, cy: _vm.task.y - 2, r: event.r },
+            on: {
+              click: function($event) {
+                return _vm.emitEventRulerEvent(
+                  "chart-event-ruler-point-click",
+                  $event,
+                  event
+                )
+              },
+              mouseenter: function($event) {
+                return _vm.emitEventRulerEvent(
+                  "chart-event-ruler-point-mouseenter",
+                  $event,
+                  event
+                )
+              },
+              mouseover: function($event) {
+                return _vm.emitEventRulerEvent(
+                  "chart-event-ruler-point-mouseover",
+                  $event,
+                  event
+                )
+              },
+              mouseout: function($event) {
+                return _vm.emitEventRulerEvent(
+                  "chart-event-ruler-point-mouseout",
+                  $event,
+                  event
+                )
+              }
+            }
+          },
+          [
+            _c("title", [
+              _vm._v(
+                "Status=" +
+                  _vm._s(event.status) +
+                  " - Progress=" +
+                  _vm._s(event.progress) +
+                  "%: " +
+                  _vm._s(event.memo)
+              )
+            ])
+          ]
+        )
+      })
+    ],
+    2
+  )
+}
+var EventRulervue_type_template_id_bd4841c6_staticRenderFns = []
+EventRulervue_type_template_id_bd4841c6_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/components/Chart/EventRuler.vue?vue&type=template&id=bd4841c6&
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/EventRuler.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ var EventRulervue_type_script_lang_js_ = ({
+  name: 'EventRuler',
+  inject: ['root'],
+  data() {
+    return {};
+  },
+  props: ['task'],
+  computed: {
+    /**
+     * Get neccessary infos for each Event Ruler
+     *
+     * @returns {Array}
+     */
+    eventsInTask() {
+      return (this.task.events || []).map(evt => {
+        return {
+          key: 'event-ruler-' + evt.time.getTime(),
+          cx: this.root.timeToPixelOffsetX(evt.time.getTime()),
+          time: evt.time,
+          status: evt.status,
+          progress: evt.progress,
+          owner: evt.owner,
+          memo: evt.memo,
+          r: evt.r || 3,
+          style: evt.style || {}
+        }
+      })
+    }
+  },
+  methods: {
+    emitEventRulerEvent(name, event, eventObj) {
+      if (!this.root.state.options.scroll.scrolling) {
+        this.root.$emit(name, {event, data: {event: eventObj, task: this.task}})
+      }
+    }
+  }
+});
+
+// CONCATENATED MODULE: ./src/components/Chart/EventRuler.vue?vue&type=script&lang=js&
+ /* harmony default export */ var Chart_EventRulervue_type_script_lang_js_ = (EventRulervue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/Chart/EventRuler.vue
+
+
+
+
+
+/* normalize component */
+
+var EventRuler_component = normalizeComponent(
+  Chart_EventRulervue_type_script_lang_js_,
+  EventRulervue_type_template_id_bd4841c6_render,
+  EventRulervue_type_template_id_bd4841c6_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var EventRuler_api; }
+EventRuler_component.options.__file = "src/components/Chart/EventRuler.vue"
+/* harmony default export */ var EventRuler = (EventRuler_component.exports);
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/Row/Task.vue?vue&type=template&id=e9c23eca&
 var Taskvue_type_template_id_e9c23eca_render = function() {
   var _vm = this
@@ -5419,6 +5627,8 @@ Project_component.options.__file = "src/components/Chart/Row/Project.vue"
 //
 //
 //
+//
+
 
 
 
@@ -5433,6 +5643,7 @@ Project_component.options.__file = "src/components/Chart/Row/Project.vue"
     Grid: Grid,
     DependencyLines: DependencyLines,
     Calendar: Calendar,
+    EventRuler: EventRuler,
     Task: Task,
     Milestone: Milestone,
     Project: Project,
@@ -5737,9 +5948,9 @@ let ignoreScrollEvents = false;
       if (this.root.state.options.times.coordinate) {
         let dim = this.$refs.chartContainer.getBoundingClientRect()
         this.root.$emit('chart-realtime-coordinate', {
-          x: ev.clientX - dim.left,
+          x: ev.clientX - dim.left + this.$refs.chartScrollContainerHorizontal.scrollLeft,
           y: ev.clientY - dim.top,
-          time: new Date(this.root.pixelOffsetXToTime(ev.clientX - dim.left))
+          time: new Date(this.root.pixelOffsetXToTime(ev.clientX - dim.left + this.$refs.chartScrollContainerHorizontal.scrollLeft))
         });
       }
       if (this.root.state.options.scroll.scrolling) {
@@ -6033,6 +6244,14 @@ function getStyle(fontSize = '12px', fontFamily = 'Arial, sans-serif') {
     'grid-line-time': {
       stroke: '#FF000080',
       'stroke-width': 1
+    },
+    'chart-row-event-ruler-axis': {
+      stroke: '#66ccff',
+      'stroke-width': 1,
+      strokeDasharray: '4 2 1'
+    },
+    'chart-row-event-ruler-point': {
+      fill: "#66ccff"
     },
     chart: {
       'user-select': 'none',

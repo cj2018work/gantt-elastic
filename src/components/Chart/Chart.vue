@@ -60,6 +60,7 @@
               :key="task.id"
             >
               <component :task="task" :is="task.type"></component>
+              <event-ruler v-show="task.showEvent" :task="task"></event-ruler>
             </g>
           </svg>
         </div>
@@ -73,6 +74,7 @@ import Grid from './Grid.vue';
 import DaysHighlight from './DaysHighlight.vue';
 import Calendar from '../Calendar/Calendar.vue';
 import DependencyLines from './DependencyLines.vue';
+import EventRuler from './EventRuler.vue'
 import Task from './Row/Task.vue';
 import Milestone from './Row/Milestone.vue';
 import Project from './Row/Project.vue';
@@ -82,6 +84,7 @@ export default {
     Grid,
     DependencyLines,
     Calendar,
+    EventRuler,
     Task,
     Milestone,
     Project,
