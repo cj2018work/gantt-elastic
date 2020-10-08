@@ -32,7 +32,6 @@
       @mouseover="emitEventRulerEvent('chart-event-ruler-point-mouseover', $event, event)"
       @mouseout="emitEventRulerEvent('chart-event-ruler-point-mouseout', $event, event)"
     >
-      <title>Status={{event.status}} - Progress={{event.progress}}%: {{event.memo}}</title>
     </circle>
   </g>
 </template>

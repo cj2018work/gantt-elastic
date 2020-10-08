@@ -3953,61 +3953,46 @@ var EventRulervue_type_template_id_bd4841c6_render = function() {
       }),
       _vm._v(" "),
       _vm._l(_vm.eventsInTask, function(event) {
-        return _c(
-          "circle",
-          {
-            key: event.key,
-            style: Object.assign(
-              {},
-              _vm.root.style["chart-row-event-ruler-point"],
-              event.style.base,
-              event.style[event.status]
-            ),
-            attrs: { cx: event.cx, cy: _vm.task.y - 2, r: event.r },
-            on: {
-              click: function($event) {
-                return _vm.emitEventRulerEvent(
-                  "chart-event-ruler-point-click",
-                  $event,
-                  event
-                )
-              },
-              mouseenter: function($event) {
-                return _vm.emitEventRulerEvent(
-                  "chart-event-ruler-point-mouseenter",
-                  $event,
-                  event
-                )
-              },
-              mouseover: function($event) {
-                return _vm.emitEventRulerEvent(
-                  "chart-event-ruler-point-mouseover",
-                  $event,
-                  event
-                )
-              },
-              mouseout: function($event) {
-                return _vm.emitEventRulerEvent(
-                  "chart-event-ruler-point-mouseout",
-                  $event,
-                  event
-                )
-              }
-            }
-          },
-          [
-            _c("title", [
-              _vm._v(
-                "Status=" +
-                  _vm._s(event.status) +
-                  " - Progress=" +
-                  _vm._s(event.progress) +
-                  "%: " +
-                  _vm._s(event.memo)
+        return _c("circle", {
+          key: event.key,
+          style: Object.assign(
+            {},
+            _vm.root.style["chart-row-event-ruler-point"],
+            event.style.base,
+            event.style[event.status]
+          ),
+          attrs: { cx: event.cx, cy: _vm.task.y - 2, r: event.r },
+          on: {
+            click: function($event) {
+              return _vm.emitEventRulerEvent(
+                "chart-event-ruler-point-click",
+                $event,
+                event
               )
-            ])
-          ]
-        )
+            },
+            mouseenter: function($event) {
+              return _vm.emitEventRulerEvent(
+                "chart-event-ruler-point-mouseenter",
+                $event,
+                event
+              )
+            },
+            mouseover: function($event) {
+              return _vm.emitEventRulerEvent(
+                "chart-event-ruler-point-mouseover",
+                $event,
+                event
+              )
+            },
+            mouseout: function($event) {
+              return _vm.emitEventRulerEvent(
+                "chart-event-ruler-point-mouseout",
+                $event,
+                event
+              )
+            }
+          }
+        })
       })
     ],
     2
@@ -4020,7 +4005,6 @@ EventRulervue_type_template_id_bd4841c6_render._withStripped = true
 // CONCATENATED MODULE: ./src/components/Chart/EventRuler.vue?vue&type=template&id=bd4841c6&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart/EventRuler.vue?vue&type=script&lang=js&
-//
 //
 //
 //
